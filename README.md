@@ -79,7 +79,7 @@ Product P001 removed successfully.
 
 Case 6: Removing More than Available Stock
 try {
-    apple.updateStock(60); // Attempting to remove more than available
+    apple.removeStock(60); // Attempting to remove more than available
 } catch (InsufficientStockException e) {
     System.out.println(e.getMessage());
 }
