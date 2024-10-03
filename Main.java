@@ -65,6 +65,16 @@ class PerishableProduct extends Product{
             System.out.println("Stock updated: " + getProductName() + " new quantity is " + getQuantity());
         }
     }
+    public void removeStack(int amount)throws InvalidQuantityException{
+      if(amount > getQuantity()){
+         System.out.println("Impossible to remove product");      
+      }else if(amount < 0){
+         throw new InvalidQuantityException("Cannot enter negative number.");
+      }else{
+         setQuantity(getQuantity() + amount);
+         System.out.println("Stock updated: " + getProductName() + " new quantity is " + getQuantity());
+      }
+    }
 }
 
 class NonPerishableProduct extends Product{
@@ -82,6 +92,16 @@ class NonPerishableProduct extends Product{
             setQuantity(amount + getQuantity());
             System.out.println("Stock updated: " + getProductName() + " new quantity is " + getQuantity());
         }
+    }
+    public void removeStack(int amount)throws InvalidQuantityException{
+      if(amount > getQuantity()){
+         System.out.println("Impossible to remove product");      
+      }else if(amount < 0){
+         throw new InvalidQuantityException("Cannot enter negative number.");
+      }else{
+         setQuantity(getQuantity() + amount);
+         System.out.println("Stock updated: " + getProductName() + " new quantity is " + getQuantity());
+      }
     }
 }
 
@@ -163,7 +183,7 @@ public class Main {
 
         // Case 6: Removing More than Available Stock
         try {
-            apple.updateStock(-60); // Attempting to remove more than available
+            apple.removeStack(1000); // Attempting to remove more than available
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -176,4 +196,3 @@ public class Main {
         }
     }
 }
-
